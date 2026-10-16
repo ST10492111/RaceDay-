@@ -1,0 +1,53 @@
+ RaceDay API Endpoint Plan
+
+ Authentication Endpoints
+
+| Method | Route | Description | Role Required | Request Body | Expected Response |
+|--------|-------|-------------|---------------|--------------|-------------------|
+| POST | /api/auth/register | Register a new user | Public | { firstName, lastName, email, password, role } | 201 Created |
+| POST | /api/auth/login | Login and get JWT token | Public | { email, password } | 200 OK |
+
+ User Endpoints
+
+| Method | Route | Description | Role Required | Request Body | Expected Response |
+|--------|-------|-------------|---------------|--------------|-------------------|
+| GET | /api/users/profile | Get current user profile | Any logged in | None | 200 OK |
+| PUT | /api/users/profile | Update user profile | Any logged in | { firstName, lastName, email } | 200 OK |
+
+ Event Endpoints
+
+| Method | Route | Description | Role Required | Request Body | Expected Response |
+|--------|-------|-------------|---------------|--------------|-------------------|
+| GET | /api/events | Get all events | Public | None | 200 OK |
+| GET | /api/events/{id} | Get event by ID | Public | None | 200 OK |
+| POST | /api/events | Create new event | Organiser | { title, description, date, location, maxEntries } | 201 Created |
+| PUT | /api/events/{id} | Update event | Organiser | { title, description, date, location, maxEntries, status } | 200 OK |
+| DELETE | /api/events/{id} | Delete event | Organiser | None | 204 No Content |
+
+ Category Endpoints
+
+| Method | Route | Description | Role Required | Request Body | Expected Response |
+|--------|-------|-------------|---------------|--------------|-------------------|
+| GET | /api/events/{eventId}/categories | Get event categories | Public | None | 200 OK |
+| POST | /api/events/{eventId}/categories | Add category | Organiser | { name, distance, entryFee, maxCapacity } | 201 Created |
+| PUT | /api/categories/{id} | Update category | Organiser | { name, distance, entryFee, maxCapacity } | 200 OK |
+| DELETE | /api/categories/{id} | Delete category | Organiser | None | 204 No Content |
+
+ Enrolment Endpoints
+
+| Method | Route | Description | Role Required | Request Body | Expected Response |
+|--------|-------|-------------|---------------|--------------|-------------------|
+| GET | /api/enrolments | Get user's enrolments | Any logged in | None | 200 OK |
+| GET | /api/events/{eventId}/enrolments | Get all event enrolments | Organiser | None | 200 OK |
+| POST | /api/events/{eventId}/enrol | Enrol in event | Participant | { categoryId } | 201 Created |
+| PUT | /api/enrolments/{id}/cancel | Cancel enrolment | Participant | None | 200 OK |
+| PUT | /api/enrolments/{id}/status | Update enrolment status | Organiser | { status } | 200 OK |
+
+ Result Endpoints
+
+| Method | Route | Description | Role Required | Request Body | Expected Response |
+|--------|-------|-------------|---------------|--------------|-------------------|
+| GET | /api/events/{eventId}/results | Get event results | Public | None | 200 OK |
+| GET | /api/users/results | Get user's results | Participant | None | 200 OK |
+| POST | /api/enrolments/{enrolmentId}/results | Record result | Organiser | { finishTime, position, status, notes } | 201 Created |
+| PUT | /api/results/{id} | Update result | Organiser | { finishTime, position, status, notes } | 200 OK |
