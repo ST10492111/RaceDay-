@@ -1,0 +1,18 @@
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "AllowedHosts": "*",
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=localhost\\SQLEXPRESS01;Database=RaceDay;Trusted_Connection=True;TrustServerCertificate=True;"
+  },
+  "Jwt": {
+    "Key": "ThisIsMySecretKeyForRaceDayAPI1234567890!@#$%^&*()",
+    "Issuer": "RaceDayAPI",
+    "Audience": "RaceDayClient",
+    "ExpiryInHours": 24
+  }
+}
