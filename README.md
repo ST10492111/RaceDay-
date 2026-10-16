@@ -47,7 +47,7 @@ The RaceDay RESTful API is built in **C# with ASP.NET Core 8** and connects to S
 5. Press F5 – Swagger opens at `https://localhost:7006/swagger`
 
 ### CI/CD Status
-![CI](https://github.com/ST10492111/RaceDay-/actions/workflows/ci.yml/badge.svg)
+![CI Green Build](./ci-green-build.png)
 
 ### Video Presentation
 [Part 2 – RaceDay API Walkthrough](YOUR_VIDEO_LINK_HERE)
