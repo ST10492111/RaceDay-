@@ -1,0 +1,45 @@
+﻿@model IEnumerable<RaceDay.MVC.ViewModels.EventViewModel>
+@{
+    ViewData["Title"] = "Upcoming Events";
+}
+
+<div class="container mt-4">
+    <div class="text-center mb-5">
+        <h1 class="display-4 fw-bold text-primary">RaceDay Events</h1>
+        <p class="lead">Find your next race, walk, or cycle event.</p>
+    </div>
+
+    <div class="row">
+        @if (!Model.Any())
+        {
+            <div class="col-12 text-center">
+                <p class="text-muted">No events found. Check back soon!</p>
+            </div>
+        }
+        else
+        {
+            @foreach (var ev in Model)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm border-0">
+                        <div class="card-header bg-dark text-white">
+                            <h5 class="card-title mb-0">@ev.Title</h5>
+                        </div>
+                        <div class="card-body">
+                            <h6 class="card-subtitle mb-2 text-muted">@ev.EventType • @ev.Distance km</h6>
+                            <p class="card-text">@ev.Description</p>
+                            <ul class="list-unstyled">
+                                <li><strong>📅 Date:</strong> @ev.EventDate.ToString("dd MMM yyyy")</li>
+                                <li><strong>📍 Location:</strong> @ev.Location</li>
+                                <li><strong>👤 Organiser:</strong> @ev.OrganiserName</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer bg-white border-0 text-center">
+                            <a href="#" class="btn btn-outline-primary w-100">View Details & Enrol</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
